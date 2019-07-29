@@ -1,0 +1,28 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<title></title>
+</head>
+<body>
+  <script>
+    window.addEventListener('load', async () => {
+      if (window.ethereum) {
+        window.web3 = new Web3(ethereum);
+        try {
+          await ethereum.enable();
+          window.alert('Modern dapp browsers')
+        } catch (error) {
+          window.alert('User denied account access')
+        }
+      }
+      else if (window.web3) {
+        window.web3 = new Web3(web3.currentProvider);
+        window.alert('Legacy dapp browsers')
+      }
+      else {
+        window.alert('Non-Ethereum browser detected. You should consider trying MetaMask!');
+      }
+    });
+  </script>
+</body>
+</html>
