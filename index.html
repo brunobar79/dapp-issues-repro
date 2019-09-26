@@ -5,12 +5,20 @@
 </head>
 <body>
   <script>
-    window.addEventListener('load', async () => {
+    document.addEventListener("DOMContentLoaded", () => {
+        console.log('Document ready - ethereum?', window.ethereum);
+    });
+    
+      
+    
+    document.addEventListener('load', async () => {
+      console.log('onload- ethereum?', window.ethereum);
       if (window.ethereum) {
         window.web3 = new Web3(ethereum);
         try {
           console.log('CALLING ETHEREUM.ENABLE...');
-          await ethereum.enable();
+          const accounts = await ethereum.enable();
+          console.log('got accounts!', accounts);
           window.alert('Modern dapp browsers')
         } catch (error) {
           window.alert('User denied account access');
