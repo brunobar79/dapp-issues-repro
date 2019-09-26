@@ -11,7 +11,7 @@
     
       
     
-    document.addEventListener('load', async () => {
+    window.addEventListener('load', async () => {
       console.log('onload- ethereum?', window.ethereum);
       if (window.ethereum) {
         window.web3 = new Web3(ethereum);
