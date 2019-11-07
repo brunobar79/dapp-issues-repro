@@ -19,7 +19,7 @@
           console.log('IFRAME CALLING ETHEREUM.ENABLE...');
           const accounts = await ethereum.enable();
           console.log('IFRAME got accounts!', accounts);
-          alert('IFRAME Modern dapp browsers')
+          window.alert('IFRAME Modern dapp browsers: ' + accounts.toString());
         } catch (error) {
           window.alert('IFRAME User denied account access');
           console.error('IFRAME ERROR:', error);
