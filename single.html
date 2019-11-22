@@ -1,0 +1,36 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<title></title>
+</head>
+<body>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+        console.log('Document ready - ethereum?', window.ethereum);
+    });
+    
+    window.addEventListener('load', async () => {
+      console.log('onload- ethereum?', window.ethereum);
+      if (window.ethereum) {
+        window.web3 = new Web3(ethereum);
+        try {
+          console.log('CALLING ETHEREUM.ENABLE...');
+          const accounts = await ethereum.enable();
+          console.log('got accounts!', accounts);
+          window.alert('Modern dapp browsers: ' + accounts.toString());
+        } catch (error) {
+          window.alert('User denied account access');
+          console.error('ERROR:', error);
+        }
+      }
+      else if (window.web3) {
+        window.web3 = new Web3(web3.currentProvider);
+        window.alert('Legacy dapp browsers')
+      }
+      else {
+        window.alert('Non-Ethereum browser detected. You should consider trying MetaMask!');
+      }
+    });
+  </script>
+</body>
+</html>
